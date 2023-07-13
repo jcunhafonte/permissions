@@ -1,0 +1,8 @@
+grpcio==1.47.0
+grpcio-tools==1.47.0
+casbin==1.16.9
+casbin_sqlalchemy_adapter==0.5.0
+psycopg2==2.9.3
+confluent-kafka[avro]
+confluent-avro
+urllib3==1.26.16

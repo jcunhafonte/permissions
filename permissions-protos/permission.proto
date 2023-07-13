@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package permission;
+
+import "google/protobuf/empty.proto";
+
+service Permission {
+	rpc GetPolicies (google.protobuf.Empty) returns (GetPoliciesReply);
+	rpc GetPoliciesByUser (GetPoliciesByUserRequest) returns (GetPoliciesByUserReply);
+	rpc CreatePolicy (CreatePolicyRequest) returns (CreatePolicyReply);
+	rpc CheckPolicy (CheckPolicyRequest) returns (CheckPolicyReply);
+}
+
+message GetPolicyReply {
+	string object = 1;
+	string action = 2;
+}
+
+message GetPoliciesReply {
+	repeated GetPolicyReply policies = 1;
+}
+
+message GetPoliciesByUserRequest {
+	int32 user_id = 1;
+}
+
+message GetPoliciesByUserReply {
+	repeated GetPolicyReply policies = 1;
+}
+
+message CreatePolicyRequest {
+	int32 user_id = 1;
+	string object = 2;
+	string action = 3;
+}
+
+message CreatePolicyReply {
+	int32 user_id = 1;
+	string object = 2;
+	string action = 3;
+}
+
+message CheckPolicyRequest {
+	int32 user_id = 1;
+	string object = 2;
+	string action = 3;
+}
+
+message CheckPolicyReply {
+	bool access = 1;
+	string message = 2;
+}
